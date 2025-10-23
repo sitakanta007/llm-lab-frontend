@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { @apply transition-all duration-300 ease-out; }
+body { @apply bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100; }
+textarea, input, select { @apply dark:bg-slate-800 dark:text-slate-100; }
+html {
+  overflow-y: scroll; /* keeps scrollbar space reserved at all times */
+}
