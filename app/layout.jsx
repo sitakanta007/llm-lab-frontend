@@ -4,7 +4,7 @@ import NavTabs from '@utils/NavTabs';
 import Providers from '@components/Providers';
 import CompareFloatingBar from '@components/Compare/CompareFloatingBar';
 
-export const metadata = { title: 'LLM Lab — Final Rebuild' };
+export const metadata = { title: 'LLM Lab — Parameter Experiments' };
 
 export default function RootLayout({ children }){
   return (
