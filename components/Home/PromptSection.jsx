@@ -196,8 +196,8 @@ export default function PromptSection() {
             <img src="/loader.svg" alt="loading" className="w-8 h-8 animate-spin" />
             <span className="text-sm font-medium">Processing experiment…</span>
             { /* show below msg only for real API calls where combo count > 13 */}
-            {!mockMode && comboCount > 13 && (
-              <span className="text-sm font-medium">Real API limit is - max 13 result items (or combinations) per request.</span>
+            {!mockMode && comboCount > process.env.RESULT_LIMIT && (
+              <span className="text-sm font-medium">Real API limit is - max ${process.env.RESULT_LIMIT} result items (or combinations) per request.</span>
             )}
           </div>
         </div>
