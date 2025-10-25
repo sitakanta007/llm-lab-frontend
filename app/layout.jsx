@@ -1,8 +1,8 @@
 import '../styles/globals.css';
-import Providers from '../components/Providers';
-import ThemeToggle from '../components/Utils/ThemeToggle';
-import NavTabs from '../components/Utils/NavTabs';
-import CompareFloatingBar from '../components/Compare/CompareFloatingBar';
+import ThemeToggle from '@utils/ThemeToggle';
+import NavTabs from '@utils/NavTabs';
+import Providers from '@components/Providers';
+import CompareFloatingBar from '@components/Compare/CompareFloatingBar';
 
 export const metadata = { title: 'LLM Lab — Final Rebuild' };
 

@@ -1,6 +1,6 @@
 'use client';
 import { Provider } from 'react-redux';
-import { store } from '../store';
+import { store } from '@store/index';
 import { ThemeProvider } from 'next-themes';
 import { Toaster } from 'react-hot-toast';
 

@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleSelect } from '../../store/experimentSlice';
+import { toggleSelect } from '@store/experimentSlice';
 
 export default function ResponseCard({ r }){
   const dispatch = useDispatch();

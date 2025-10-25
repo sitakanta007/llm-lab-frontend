@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { X } from 'lucide-react';
 import { useState } from 'react';
 import CompareModal from './CompareModal';
-import { clearSelection, setSelection } from '../../store/experimentSlice';
+import { clearSelection, setSelection } from '@store/experimentSlice';
 
 export default function CompareFloatingBar() {
   const [isCompareOpen, setIsCompareOpen] = useState(false);

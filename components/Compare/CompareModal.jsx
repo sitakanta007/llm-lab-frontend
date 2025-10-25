@@ -106,7 +106,7 @@ export default function CompareModal({ isOpen, onClose, selectedResults }) {
           <div className="sticky bottom-0 h-6 bg-gradient-to-t from-white/90 dark:from-slate-800/90 to-transparent mt-4" />
         </div>
 
-        {/* Scroll-to-top button anchored to the container (does NOT scroll) */}
+        {/* Scroll-to-top button anchored to the container (does NOT scroll) - TODO : try to use same scroll-to-top component which is used in all pages  */}
         <button
           onClick={handleScrollTop}
           className={`absolute bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 ${

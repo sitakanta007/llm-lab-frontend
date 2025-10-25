@@ -1,6 +1,6 @@
 'use client';
 import { useSelector } from 'react-redux';
-import { Download, Clipboard, ChevronDown, Check } from 'lucide-react';
+import { Download, ChevronDown, Check } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 

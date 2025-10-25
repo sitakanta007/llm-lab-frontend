@@ -37,7 +37,7 @@ export default function NavTabs() {
               {tab.name}
             </Link>
 
-            {/* ✅ Active underline */}
+            {/* Active underline */}
             {isActive && (
               <motion.div
                 layoutId="underline"
@@ -53,7 +53,7 @@ export default function NavTabs() {
               />
             )}
 
-            {/* ✨ Hover underline (only if not active) */}
+            {/* Hover underline (only if not active) */}
             {!isActive && (
               <AnimatePresence>
                 {isHovered && (

@@ -2,15 +2,16 @@
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
 import dynamic from 'next/dynamic';
-import { useMounted } from '../hooks/useMounted';
-import PromptSection from '../components/Home/PromptSection';
-import ChartSkeleton from '../components/Charts/ChartSkeleton';
-import DashboardCard from '../components/Home/DashboardCard';
-import ResponseGrid from '../components/Response/ResponseGrid';
-import InlineError from '../components/Utils/InlineError';
-import ExportButton from '../components/Utils/ExportButton';
+import { useMounted } from '@hooks/useMounted';
+import InlineError from '@utils/InlineError';
+import ExportButton from '@utils/ExportButton';
+import ScrollToTopButton from "@utils/ScrollToTopButton";
+import PromptSection from '@components/Home/PromptSection';
+import ChartSkeleton from '@components/Charts/ChartSkeleton';
+import DashboardCard from '@components/Home/DashboardCard';
+import ResponseGrid from '@components/Response/ResponseGrid';
 
-const PremiumChart = dynamic(() => import('../components/Charts/PremiumChart'), {
+const PremiumChart = dynamic(() => import('@components/Charts/PremiumChart'), {
   ssr: false,
   loading: () => <ChartSkeleton />
 });
@@ -42,6 +43,7 @@ export default function Page(){
   }
 
   return (
+    <>
     <div className="p-6 max-w-7xl mx-auto space-y-6">
       <PromptSection/>
 
@@ -68,5 +70,7 @@ export default function Page(){
         <ResponseGrid/>
       </DashboardCard>
     </div>
+    <ScrollToTopButton />
+    </>
   );
 }

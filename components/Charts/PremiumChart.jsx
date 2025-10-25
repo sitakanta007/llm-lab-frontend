@@ -3,9 +3,9 @@ import React, { useMemo, useState } from 'react';
 import {
   ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, RadarChart, PolarGrid, PolarAngleAxis, Radar,
-  BarChart, Bar, AreaChart, Area, ScatterChart, Scatter
+  BarChart, Bar, AreaChart, Area
 } from 'recharts';
-import { useMounted } from '../../hooks/useMounted';
+import { useMounted } from '@hooks/useMounted';
 import ChartSkeleton from './ChartSkeleton';
 
 export default function PremiumChart({ data }){
@@ -37,7 +37,6 @@ export default function PremiumChart({ data }){
           <label className="text-sm">Chart</label>
           <select value={chartType} onChange={e=>setChartType(e.target.value)} className="border rounded px-2 py-1 text-sm">
             <option value="line">Line</option>
-            <option value="scatter">Scatter</option>
             <option value="radar">Radar (Top N)</option>
             <option value="bar">Bar (Top N)</option>
             <option value="area">Area</option>
@@ -71,16 +70,6 @@ export default function PremiumChart({ data }){
               <Legend />
               <Line type="monotone" dataKey={`metrics.${metric}`} stroke="#3b82f6" strokeWidth={2} activeDot={{ r: 6 }} />
             </LineChart>
-          )}
-          {chartType==='scatter' && (
-            <ScatterChart>
-              <CartesianGrid strokeDasharray="3 3" strokeOpacity={0.2} />
-              <XAxis type="number" dataKey="params.temperature" name="Temperature" />
-              <YAxis type="number" dataKey={`metrics.${metric}`} name="Metric" domain={[0,1]} />
-              <Tooltip />
-              <Legend />
-              <Scatter data={view} />
-            </ScatterChart>
           )}
           {chartType==='radar' && (
             <RadarChart data={view.slice(0, Math.max(3, topN))}>

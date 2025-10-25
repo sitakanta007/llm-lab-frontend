@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { Loader2 } from 'lucide-react'; 
-import InlineError from "../../components/Utils/InlineError";
 import Link from "next/link";
+import InlineError from "@utils/InlineError";
+import ScrollToTopButton from "@utils/ScrollToTopButton";
+import { ExperimentApi } from "@api/experimentApi";
 
 export default function ExperimentsPage() {
   const [experiments, setExperiments] = useState([]);
   const [total, setTotal] = useState(0);
-  const [limit] = useState(10); // TODO : make this configurable
+  const [limit] = useState(10); // TODO : make this pagination limit configurable in site-config js 
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,14 +18,9 @@ export default function ExperimentsPage() {
   const fetchExperiments = async () => {
     try {
       setLoading(true);
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/experiments?limit=${limit}&offset=${offset}`
-      );
-
-      if (!res.ok) throw new Error(`Failed to fetch experiments (${res.status})`);
-      const data = await res.json();
-
-      setExperiments(Array.isArray(data.experiments) ? data.experiments : []);
+      const res = await ExperimentApi.getExperiments(limit, offset);
+      const data = res.data;
+      setExperiments(Array.isArray(data.experiments) ? data.experiments : data.data || []);
       setTotal(data.total || 0);
     } catch (err) {
       console.error("Error loading experiments:", err);
@@ -41,6 +38,7 @@ export default function ExperimentsPage() {
   if (error) return <InlineError message={error} />;
 
   return (
+    <>
     <div className="p-6 max-w-4xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">Saved Experiments</h1>
 
@@ -56,7 +54,7 @@ export default function ExperimentsPage() {
             >
               <h2 className="text-lg font-semibold">{exp.prompt}</h2>
               <p className="text-sm text-gray-500">
-                {exp.total} parameter combination{exp.total !== 1 ? "s" : ""}
+                {(exp.results?.length ?? 0)} parameter combination{(exp.results?.length ?? 0) !== 1 ? "s" : ""}
               </p>
               <p className="text-xs text-gray-400 mt-1">
                 Created at {new Date(exp.createdAt).toLocaleString()}
@@ -66,7 +64,7 @@ export default function ExperimentsPage() {
         </div>
       )}
 
-      {/* Pagination Controls */}
+      {/* Pagination Controls - TODO : pagination can be made into a component and can be used in other places */}
       {total > limit && (
         <div className="flex justify-between items-center mt-6">
           <button
@@ -99,5 +97,7 @@ export default function ExperimentsPage() {
         </div>
       )}
     </div>
+    <ScrollToTopButton />
+    </>
   );
 }

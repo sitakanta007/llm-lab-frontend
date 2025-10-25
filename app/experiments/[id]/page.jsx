@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { Loader2 } from 'lucide-react';
-import InlineError from "../../../components/Utils/InlineError";
-import ResultCard from "../../../components/ResultCard";
+import InlineError from "@utils/InlineError";
+import ScrollToTopButton from "@utils/ScrollToTopButton";
+import ResultCard from "@components/ResultCard";
+import { ExperimentApi } from "@api/experimentApi";
 
 export default function ExperimentDetailPage() {
   const { id } = useParams();
@@ -18,18 +20,9 @@ export default function ExperimentDetailPage() {
     const fetchExperiment = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/experiments/${id}`);
-
-        if (!res.ok) {
-          if (res.status === 404) {
-            throw new Error("Experiment not found.");
-          } else {
-            throw new Error(`Failed to fetch experiment. Status: ${res.status}`);
-          }
-        }
-
-        const data = await res.json();
-        setExperiment(data);
+        const res = await ExperimentApi.getExperimentById(id);
+        const data = res.data;
+        setExperiment(data.experiment || null);
       } catch (err) {
         console.error("Error loading experiment:", err);
         setError(err.message);
@@ -55,16 +48,17 @@ export default function ExperimentDetailPage() {
   }
 
   return (
+    <>
     <div className="p-6 max-w-4xl mx-auto">
       <h1 className="text-2xl font-bold mb-2">
         Experiment Details
       </h1>
-      <p className="text-gray-600 mb-4">{experiment.prompt}</p>
+      <p className="text-xl text-gray-400 mb-4">{experiment.prompt}</p>
       <p className="text-sm text-gray-400 mb-6">
         Created at: {new Date(experiment.createdAt).toLocaleString()}
       </p>
       <p className="text-sm text-gray-400 mb-6">
-        {experiment.results.length} Parameter Combination{experiment.results.length !== 1 ? "s" : ""}
+        {experiment?.results?.length ?? 0} Parameter Combination{(experiment?.results?.length ?? 0) !== 1 ? "s" : ""}
       </p>
 
       {/* Results Section */}
@@ -80,5 +74,7 @@ export default function ExperimentDetailPage() {
         </div>
       )}
     </div>
+    <ScrollToTopButton />
+    </>
   );
 }
