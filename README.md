@@ -1,26 +1,48 @@
-# LLM Frontend
+# 🧪 LLM Lab – Frontend
 
-## Run
-```
+A lightweight and modular frontend application to run and analyze LLM experiment outputs.  
+Built with Next.js, Tailwind CSS, and Redux Toolkit — designed for clean architecture, quick experimentation, and clear visualization.
+
+---
+
+## 🚀 Features
+
+- ✍️ Prompt input with adjustable model parameters  
+- 🧮 Generate and view experiment results in real time  
+- 📊 Visualization of key metrics through charts  
+- 🆚 Compare multiple experiments side by side  
+- 💾 Export results for offline analysis  
+- 🌓 Dark/light mode toggle for better UX
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js (React-based)  
+- **Language:** JavaScript (JSX)  
+- **Styling:** Tailwind CSS  
+- **State Management:** Redux Toolkit  
+- **API Client:** Axios  
+- **Deployment:** Vercel + Amazon Route 53 (subdomain)
+
+---
+
+## ⚙️ Setup Instructions
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/llm-lab-frontend.git
+
+# 2. Navigate to the project directory
+cd llm-lab-frontend
+
+# 3. Install dependencies
 npm install
-npm run dev
-```
-Frontend: http://localhost:3000  
-Backend Base URL: http://localhost:4000/api
 
-## As of Now Includes
-- App Router with Home and Experiments tabs
-- Prompt input + parameter ranges with step
-- Loader spinner & chart skeleton
-- Error box (single message) for all input validations and other errors
-- Charts: Line, Radar, Bar, Area with dummy data.
-- Top-N toggle + metric selector
-- Redux Toolkit, Tailwind, Recharts, next-js-themes
-- Select multiple result items to compare, coparison modal, Scroll to Top
-- Save responses and navigate later (Experiments tab). (with temporary JSON File storage only)
-- Added Scroll-to-Top in home and experiments tabs
-- Added close button in inline error box (prompt section)
-- Added combo count, param count, token count chips
-- Added mock data checkbox
-- Increase wait time for /generate url axios call
-- Show msg if real API call has more than 13 combinations
+# 4. Configure environment variables
+# Example: NEXT_PUBLIC_API_BASE_URL=https://api.yourdomain.com
+
+# 5. Run development server
+npm run dev
+
+# 6. Open http://localhost:3000 in your browser
