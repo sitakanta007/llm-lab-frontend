@@ -47,9 +47,10 @@ npm run dev
 
 # 6. Open http://localhost:3000 in your browser
 
-Recommended Node version: 18.x or above
-
-🧭 Architecture Overview
+# Recommended Node version: 18.x or above
+```
+ 
+## 🧭 Architecture Overview
 
 API Layer: Modular Axios-based integration
 
@@ -71,7 +72,7 @@ llm-lab-frontend/
 ├── styles/
 └── ...
 
-🧑‍💻 UI/UX Design Rationale
+## 🧑‍💻 UI/UX Design Rationale
 
 Clean, minimal interface with clear visual hierarchy
 
@@ -83,11 +84,11 @@ Dark/light theme toggle for accessibility
 
 Focus on quick experimentation without friction
 
-🚀 Deployment
+## 🚀 Deployment
 
 Build using:
 
-npm run build
+`npm run build`
 
 
 Deploy to Vercel or similar hosting platform.
@@ -96,7 +97,7 @@ Configure custom subdomain using Amazon Route 53 if required.
 
 Set environment variables securely in your hosting provider.
 
-📝 Future Improvements
+## 📝 Future Improvements
 
 Enhanced comparison features (filters & sorting)
 
