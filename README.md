@@ -97,6 +97,9 @@ Configure custom subdomain using Amazon Route 53 if required.
 
 Set environment variables securely in your hosting provider.
 
+Currently running on - https://llm-lab-frontend-v.vercel.app/
+(max 13 results can be fetched which takes around 2 mintues of time, due to a t2.micro backend server)
+
 ## 📝 Future Improvements
 
 Enhanced comparison features (filters & sorting)
